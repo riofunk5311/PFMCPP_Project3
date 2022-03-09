@@ -53,51 +53,51 @@ Sub Object 1: Steering Wheel
     Name 4 things you'll find on the:    Steering Wheel
         1) paddle shifters
         2) 'cruise control' controls
-        3) 
-        4) 
+        3) audio controls
+        4) car horn 
     Name 2 things you can do with the:   Steering Wheel
         1) adjust cruise control settings.
-        2)
+        2) honk
         
 Sub Object 2: Instrument Cluster
     Name 4 things you'll find on the:   Instrument Cluster
-        1)
-        2)
-        3)
-        4)
+        1) speed meter
+        2) rpm meter
+        3) shift indicator
+        4) thermometer guage
     Name 3 things you can do with the:   Instrument Cluster
-        1)
-        2)
-        3)
+        1) measure outside or inside temperature 
+        2) know how fast the car is running
+        3) know what gear the car is in
     
 Sub Object 3: Environment Controls
     Name 3 things you'll find on the:    Environment Controls
-        1)
-        2)
-        3)
+        1) ac power switch
+        2) dials of ac temperature
+        3) wind direction control
     Name 3 things you can do with the:   Environment Controls
-        1)
-        2)
-        3)
+        1) turn ac on/off 
+        2) adjuct temperature inside your car
+        3) adjust wind directions
 
 Sub Object 4: Infotainment System
     Name 3 things you'll find on the:    Infotainment System
-        1)
-        2)
-        3)
+        1) number keypad
+        2) dial
+        3) hazard lights button
     Name 3 things you can do with the:   Infotainment System
-        1)
-        2)
-        3)
+        1) make a phone call
+        2) adjust volume
+        3) turn hazard lights on/off
 
 Sub Object 5: Seat 
     Name 3 things you'll find on the:    Seat
-        1)
-        2)
-        3)
+        1) arm rest
+        2) buttons for seat positions
+        3) window button
     Name 2 things you can do with the:   Seat
-        1)
-        2)
+        1) open/close window
+        2) adjust your seat position
 */
 
 /*
