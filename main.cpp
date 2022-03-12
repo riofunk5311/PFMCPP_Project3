@@ -155,59 +155,45 @@ Part 1b Assignment: 1 Step
 */
 
 /*
-Thing 1)
+Thing 2) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
-Thing 2)
+Thing 3) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
-Thing 3)
+Thing 4) Repair Motorcyle
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
 3 things it can do:
     1)
-    2)
-    3)
- */
-
-/*
-Thing 4)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
+    2) 
+    3) 
  */
 
  /*
@@ -280,17 +266,17 @@ Define an object that is made of 5 sub-objects.
 */
 
 /*
-Thing 10)
+Thing 10) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
@@ -385,73 +371,73 @@ Step 3 is written below UDTs 5 - 9
 */
 
 /*
-Thing 5)
+Thing 5) 
+5 properties:
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
+3 things it can do:
+    1) 
+    2) 
+    3) 
+ */
+
+/*
+Thing 6) 
+5 properties:
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
+3 things it can do: 
+    1)
+    2) 
+    3) 
+ */
+
+/*
+Thing 7) 
 5 properties:
     1)
+    2) 
+    3)
+    4) 
+    5) 
+3 things it can do:
+    1) 
+    2) 
+    3) 
+ */
+
+/*
+Thing 8) 
+5 properties:
+    1) 
     2)
     3)
     4)
     5)
 3 things it can do:
-    1)
-    2)
+    1) 
+    2) 
     3)
  */
 
 /*
-Thing 6)
+Thing 9) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
@@ -469,9 +455,128 @@ MOVE THEM BELOW this block comment and put them in numerical order
     I only want to see the 10 UDTs written BELOW this block comment, in numerical order (1 - 10).
 
 After you have MOVED your 10 UDTs, send me a DM with your pull request link.
-I will review the pseudo-code that you have written.
-*/
+I will review the pseudo-code that you have written. 
 
+1) Build a House
+5 properties:
+    number of nail guns (int)
+    number of paint supplies (int)
+    number of vacuum cleaners (int)
+    the amount of wood needed  (int)
+    number of sander (int)
+3 things it can do:
+    paint walls
+    polish the surface of woods
+    punch nails
+
+2) Build a PC
+5 properties:
+    number of CPUs (int)
+    the amount of RAM gb (int)
+    the amount of HDD gb (int)
+    number of OS (int)
+    the amount of Wattage (float)
+3 things it can do:
+    write program
+    create video
+    edit photo
+
+3) Photo Shoot
+5 properties:
+    number of cameras (int)
+    the amount of memory card per shooting gb (int)
+    number of hair make up artist (int)
+    the amount of clothes needed (float)
+    number of models shot per a day (int)
+3 things it can do:
+    make PR of company
+    make a new style of fashion
+    book rehearsal studio
+
+4) Repair Motorcyle
+5 properties:
+    number of tools (int)
+    the amount of engine oil (float)
+    number of tires (int)
+    number of chains (int)
+    number of sprockets (int)
+3 things it can do:
+    clearn chain
+    change tires
+    repair carburetor
+
+5) Memory
+5 properties:
+    the amount of ram (int)
+    number of apps running (int)
+    number of memory bus speed (float)
+    the amount of speed to read data (float)
+    he amount of speed to write data (float)
+3 things it can do:
+    holds a bunch of apps running
+    hispeed data transfer
+    improve frame rate
+
+6) Keyboard
+5 properties:
+    number of typing keys (int)
+    the amount of key stroke (float)
+    language of keyboard (std::string)
+    the number of blutooth channel (float)
+    the number of usb ports (int)
+3 things it can do: 
+    type characters
+    connet to usb 
+    send key commands to the computer
+
+7) Battery
+5 properties:
+    amout of battery power (float)
+    hours to charge battery (float)
+    number of battery (int)
+    amoutn of peak watt (float)
+    size of battery cm (float)
+3 things it can do:
+    keep cpu running
+    store electrical power
+    charge other devices
+
+8) Trackpad
+5 properties:
+    depth of track pad mm (int)
+    width of track pad mm (int)
+    sensitivity of trackpad (double)
+    cursor acceralators (float)
+    number of conductors (int)
+3 things it can do:
+    detect movements of finger tip
+    detect positions 
+    detect right click or left click
+
+9) SSD
+5 properties:
+    amount of SSD gb (int)
+    the amoutn of speed of data transfer (float)
+    brand (std::string)
+    number of SSD (int)
+    type of connection (std::string)
+3 things it can do:
+    read data
+    write data
+    install app
+
+10) Laptop
+5 properties:
+    Memory
+    Keyboard
+    Battery
+    Trackpad
+    SSD
+3 things it can do:
+    Run a program
+    Display fonts
+    Calculate algorithm
+ */
 
 
 
