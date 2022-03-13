@@ -59,13 +59,13 @@ Sub Object 1: Steering Wheel
         1) adjust cruise control settings.
         2) honk
 
-/*
 Part 1b - Lesson
 Now you have some basic understanding of how to think of an object 
 in terms of its sub-objects.
 
 Next, write 4 un-related UDTs in plain english:
 */
+
 /*
  example:  
  
@@ -113,8 +113,6 @@ Part 1b Assignment: 1 Step
         'int float double bool char std::string'.
 */
 
-/*
-
  /*
 Part 1c - Lesson
 You have just finished practicing writing out a UDT that is has 
@@ -161,6 +159,7 @@ Part 1c example:
     these 5 Sub Objects will need to be defined with 5 primitive 
     properties and 3 actions EACH.
 */
+
 /*
 ===================
 Part 1c assignment: 2 steps
@@ -183,8 +182,6 @@ Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
 */
-
-/*
 
 /*
 Part 1d - Lesson
@@ -276,7 +273,6 @@ each property for UDTs 5 - 9.
 
 Step 3 is written below UDTs 5 - 9
 */
-
 
 /*
 ===================
