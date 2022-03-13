@@ -58,47 +58,6 @@ Sub Object 1: Steering Wheel
     Name 2 things you can do with the:   Steering Wheel
         1) adjust cruise control settings.
         2) honk
-        
-Sub Object 2: Instrument Cluster
-    Name 4 things you'll find on the:   Instrument Cluster
-        1) speed meter
-        2) rpm meter
-        3) shift indicator
-        4) thermometer guage
-    Name 3 things you can do with the:   Instrument Cluster
-        1) measure outside or inside temperature 
-        2) know how fast the car is running
-        3) know what gear the car is in
-    
-Sub Object 3: Environment Controls
-    Name 3 things you'll find on the:    Environment Controls
-        1) ac power switch
-        2) dials of ac temperature
-        3) wind direction control
-    Name 3 things you can do with the:   Environment Controls
-        1) turn ac on/off 
-        2) adjuct temperature inside your car
-        3) adjust wind directions
-
-Sub Object 4: Infotainment System
-    Name 3 things you'll find on the:    Infotainment System
-        1) number keypad
-        2) dial
-        3) hazard lights button
-    Name 3 things you can do with the:   Infotainment System
-        1) make a phone call
-        2) adjust volume
-        3) turn hazard lights on/off
-
-Sub Object 5: Seat 
-    Name 3 things you'll find on the:    Seat
-        1) arm rest
-        2) buttons for seat positions
-        3) window button
-    Name 2 things you can do with the:   Seat
-        1) open/close window
-        2) adjust your seat position
-*/
 
 /*
 Part 1b - Lesson
@@ -155,46 +114,6 @@ Part 1b Assignment: 1 Step
 */
 
 /*
-Thing 2) 
-5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
-3 things it can do:
-    1) 
-    2) 
-    3) 
- */
-
-/*
-Thing 3) 
-5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
-3 things it can do:
-    1) 
-    2) 
-    3) 
- */
-
-/*
-Thing 4) Repair Motorcyle
-5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
-3 things it can do:
-    1)
-    2) 
-    3) 
- */
 
  /*
 Part 1c - Lesson
@@ -266,18 +185,6 @@ Define an object that is made of 5 sub-objects.
 */
 
 /*
-Thing 10) 
-5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
-3 things it can do:
-    1) 
-    2) 
-    3) 
- */
 
 /*
 Part 1d - Lesson
@@ -370,75 +277,6 @@ each property for UDTs 5 - 9.
 Step 3 is written below UDTs 5 - 9
 */
 
-/*
-Thing 5) 
-5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
-3 things it can do:
-    1) 
-    2) 
-    3) 
- */
-
-/*
-Thing 6) 
-5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
-3 things it can do: 
-    1)
-    2) 
-    3) 
- */
-
-/*
-Thing 7) 
-5 properties:
-    1)
-    2) 
-    3)
-    4) 
-    5) 
-3 things it can do:
-    1) 
-    2) 
-    3) 
- */
-
-/*
-Thing 8) 
-5 properties:
-    1) 
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1) 
-    2) 
-    3)
- */
-
-/*
-Thing 9) 
-5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
-3 things it can do:
-    1) 
-    2) 
-    3) 
- */
 
 /*
 ===================
@@ -457,19 +295,19 @@ MOVE THEM BELOW this block comment and put them in numerical order
 After you have MOVED your 10 UDTs, send me a DM with your pull request link.
 I will review the pseudo-code that you have written. 
 
-1) Build a House
+1) Homebuilding
 5 properties:
     number of nail guns (int)
     number of paint supplies (int)
     number of vacuum cleaners (int)
     the amount of wood needed  (int)
-    number of sander (int)
+    number of sanders (int)
 3 things it can do:
     paint walls
     polish the surface of woods
     punch nails
 
-2) Build a PC
+2) Custom Built PC
 5 properties:
     number of CPUs (int)
     the amount of RAM gb (int)
@@ -487,13 +325,13 @@ I will review the pseudo-code that you have written.
     the amount of memory card per shooting gb (int)
     number of hair make up artist (int)
     the amount of clothes needed (float)
-    number of models shot per a day (int)
+    number of models to shoot per a day (int)
 3 things it can do:
     make PR of company
     make a new style of fashion
-    book rehearsal studio
+    book rehearsal studios
 
-4) Repair Motorcyle
+4) Motorcycle Repair
 5 properties:
     number of tools (int)
     the amount of engine oil (float)
@@ -519,7 +357,7 @@ I will review the pseudo-code that you have written.
 
 6) Keyboard
 5 properties:
-    number of typing keys (int)
+    number of keys typed (int)
     the amount of key stroke (float)
     language of keyboard (std::string)
     the number of blutooth channel (float)
@@ -531,10 +369,10 @@ I will review the pseudo-code that you have written.
 
 7) Battery
 5 properties:
-    amout of battery power (float)
+    amount of battery power (float)
     hours to charge battery (float)
     number of battery (int)
-    amoutn of peak watt (float)
+    amount of peak wattage (float)
     size of battery cm (float)
 3 things it can do:
     keep cpu running
