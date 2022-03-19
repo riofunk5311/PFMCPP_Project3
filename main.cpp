@@ -198,7 +198,30 @@ struct CarWash //                                   1) define an empty struct fo
     paint walls
     polish the surface of woods
     punch nails
+*/
 
+struct Homebuilding
+{
+    // number of nail guns
+    int numNailGuns = 5;
+    // number of paint supplies
+    int numPaintSupplies = 10;
+    //number of vacuum cleaners
+    int numVaccumCleaners = 3;
+    // the amount of wood needed
+    int numWoodNeeded = 35;
+    // number of sanders 
+    int numSanders = 4;
+
+    // paint the walls 
+    int paintWall(float gallonOfPaint); //return number of walls painted
+    // polish the surface of woods
+    void polishSurface(int pieceOfWood);
+    //  punch nails
+    void punchNail(int boxOfNail);
+};
+
+/*
 2) Custom Built PC
 5 properties:
     number of CPUs (int)
@@ -210,7 +233,50 @@ struct CarWash //                                   1) define an empty struct fo
     write program
     create video
     edit photo
+*/
 
+struct CustomBuildPc
+{
+    // number of cpus
+    int numOfCpus = 3;
+    // amount of ram in gb
+    int amountOfRamInGb = 32;
+    // amount of HDD in gb
+    int amountOfHddInGb = 2000;
+    // number of OS
+    int numberOfOs = 1;
+    // amount of wattage
+    int amountOfWattage = 600;
+
+    struct Cpu
+    {
+        // clock spped of cpu
+        float clockSpeedInGhz = 2.8f;
+        // number of cpu cores
+        int numCpuCore = 2;
+        // number of physical cpu
+        int numPhysicalCpus = 4;
+        // brand of cpu
+        std::string manufacturer = "Intel";
+        // model name of cpu
+        std::string model = "Xeon";
+
+        void runProgram(int memoryUse, float wattageConsumption, float cpuTemp);
+        float powerConsume(float timeCpuRunningInMinutes, int cpuUsage, bool multiThreadingOn = true); // return wattage cpu consumes
+        float getTimeToCompile(float sizeOfFile, std::string compileError); // return compile time in minute
+    };
+
+    // write program
+    void writeProgram(Cpu cpuA);
+    // create video
+    void createVideo(Cpu cpuB);
+    // edit photo
+    void editPhoto(std::string appToUse, float memoryUsage);
+
+    Cpu cpuNotInUse;
+};
+
+/*
 3) Photo Shoot
 5 properties:
     number of cameras (int)
@@ -222,7 +288,43 @@ struct CarWash //                                   1) define an empty struct fo
     make PR of company
     make a new style of fashion
     book rehearsal studios
+*/
 
+struct PhotoShoot
+{
+    // number of cameras
+    int numCameras = 4;
+    // amount of memory card per shooting in gb
+    int amountOfMemoryCard = 512;
+    // number of hair-make-up artist
+    int numHariMakeUpArtists = 2;
+    // amount of clothes needed
+    float amountOfClothes = 25.0f;
+    // number of models to shoot per day
+    int numModel = 6;
+
+    struct Camera
+    {
+        double shutterSpeed = 0.000125; // 1/8000 mm seconds
+        bool isMirrorLess = true;
+        std::string brand = "Nikon";
+        std::string model = "Z9";
+        std::string typeOfLens = "standard";
+
+        void shootVideo();
+        void changeLens(std::string nameOfLens);
+        int takePhoto(); // return number of photos taken
+    };    
+
+    // make PR of company
+    void makePr(std::string nameOfCompanies, std::string nameOfProduct);
+    // make a new style of fashion
+    void makeNewFashionStyle(Camera cameraA);
+    // book rehearsal studios
+    int bookStudio(int daysToShoot, int numOfCrews); // return dates of studio booked 
+};
+
+/*
 4) Motorcycle Repair
 5 properties:
     number of tools (int)
@@ -234,31 +336,100 @@ struct CarWash //                                   1) define an empty struct fo
     clearn chain
     change tires
     repair carburetor
+*/
 
+struct MotorcycleRepair
+{
+    // number of tools
+    int numTools = 48;
+    // amount of engine oil
+    float amountOfEnginOil = 25;
+    // number of times
+    int numTires = 2;
+    // number of chains
+    int numChains = 4;
+    // number of sprockets
+    int numSprockets = 2;
+
+    // clean chain
+    void cleanChain(float amountOfLube);
+    // change tires
+    int changeTires(float sizeOfTires, bool blockTire); // return how much it costs
+    // repair carburetor
+    void repairCarburetor(bool isStockCarburetor);
+};
+
+/*
 5) Memory
 5 properties:
     the amount of ram (int)
     number of apps running (int)
     number of memory bus speed (float)
     the amount of speed to read data (float)
-    he amount of speed to write data (float)
+    the amount of speed to write data (float)
 3 things it can do:
     holds a bunch of apps running
     hispeed data transfer
     improve frame rate
+*/
 
+struct Memory
+{
+    // amount of ram
+    int amountOfRam = 64;
+    // number of apps running
+    int numberOfAppsRunning = 15;
+    // number of memory bus speed
+    float memoryBusSpeed = 800;
+    // amount of speed to read data
+    float ramReadSpeed = 40; 
+    // amount of speed to write data
+    float ramWriteSpeed = 40;
+
+    // holds a bunch of apps running
+    float numAppRunning(float timeAppRunning, double maxMemoryUsed); // return how much memory available
+    // hispeed data transfer
+    void transferData(float peakTransferRate);
+    // improve frame rate
+    void improveFps(float fps, int refreshRate);
+};
+
+/*
 6) Keyboard
 5 properties:
     number of keys typed (int)
     the amount of key stroke (float)
     language of keyboard (std::string)
-    the number of blutooth channel (float)
+    the number of bluetooth channel (float)
     the number of usb ports (int)
 3 things it can do: 
     type characters
-    connet to usb 
+    connect to usb 
     send key commands to the computer
+*/
 
+struct Keyboard
+{
+    // number of keys typed
+    int numKeysTyped = 20;
+    // amount of key stroke
+    float distanceKeyTravel = 15.0f;
+    // language of keyboard
+    std::string keyLanguage = "US";
+    // number of bluetooth channel
+    float bluetoothChannel = 2.0f;
+    // number of usb ports
+    int numUsbPorts = 2;
+
+    // type characters
+    int typeCharacters(int wordTypedInMin); // return number of characters you typed
+    // connect to usb
+    void connectToUsb(int numPortsConnected);
+    // send key commands to the computer
+    void sendKeyCommands(int keyInput, std::string keyLanguage);
+};
+
+/*
 7) Battery
 5 properties:
     amount of battery power (float)
@@ -270,7 +441,30 @@ struct CarWash //                                   1) define an empty struct fo
     keep cpu running
     store electrical power
     charge other devices
+*/
 
+struct Battery
+{
+    // amount of battery power
+    float batteryPower = 69.6f;
+    // hours to charge the battery
+    float chargeBattery = 1.5f;
+    // number of battery
+    int numBattery = 1;
+    // amount of peak wattage
+    float peakWattage = 96.0f;
+    // size of battery 
+    float sizeOfBattery = 1400;
+
+    // keep cpu running
+    void keepCpuRunning(float cpuAveragePowerConsumption, float cpuAveragePower);
+    // store electriacl power
+    float storeElectricalPower(float chargeBattery, float currentWattsInUse); // return amount of battery power left
+    // charge other devices
+    int chargeOtherDevices(int numPortsConnected, float powerDrawn); // return amount of power to charge other devices left
+};
+
+/*
 8) Trackpad
 5 properties:
     depth of track pad mm (int)
@@ -282,7 +476,29 @@ struct CarWash //                                   1) define an empty struct fo
     detect movements of finger tip
     detect positions 
     detect right click or left click
+*/
+struct Trackpad
+{
+    // depth of trackpad mm
+    int depthOfTrackpad = 1149;
+    // width of trackpad mm 
+    int widthOfTrackpad = 1600;
+    // sensitivity of trackpad
+    double trackpadSensitivity = 5.00; 
+    // cursor accrelators
+    float cursorAcceleration = 2.0f;
+    // number of conductors
+    int numConductors = 2;
 
+    // detect movements of finger tip
+    void detectFingerMovement(float xPosition, float yPosition, bool isFingerOn = false);
+    // detect positions
+    float detectPositions(int numFingerTouched, bool isFingerMoved); // return x, y positions 
+    // detect right click or left click
+    void detectClick(float xPositionClicked, float yPositionClicked);
+};
+
+/*
 9) SSD
 5 properties:
     amount of SSD gb (int)
@@ -294,7 +510,29 @@ struct CarWash //                                   1) define an empty struct fo
     read data
     write data
     install app
+*/
+struct SSD
+{
+    // amount of SSD in gb
+    int sizeOfSsd = 512;
+    // amount of speed of data transfer
+    float dataTransferSpeed = 100; // mb/second
+    // brand
+    std::string brand = "Western Digital";
+    // number of SSD
+    int numOfSsd = 2;
+    // type on connection
+    std::string connectionType = "NVMe";
 
+    // read data
+    float readData(float sizeOfFile); // return speed of reading data
+    // write data
+    float writeData(float sizeOfFile); // return speed of wrting data
+    // install app
+    void installApp(float sizeOfAvailableSpace, float sizeOfApp);
+};
+
+/*
 10) Laptop
 5 properties:
     Memory
@@ -308,6 +546,21 @@ struct CarWash //                                   1) define an empty struct fo
     Calculate algorithm
  */
 
+struct Laptop
+{
+    Memory samsung;
+    Keyboard currentKeyboardLayout;
+    Battery batteryChargeCycleCount;
+    Trackpad externalTrackpadIsConnected;
+    SSD Toshiba;
+
+    // run a program
+    int runProgram(int numAppsInstalled, float maxMemoryAppUse); // return number of apps running
+    // Display fonts
+    void displayFonts(std::string fontName);
+    // Calculate algorithm
+    void calculateAlgorithm(bool isWrittenInCpp);
+};
 
 
 /*
