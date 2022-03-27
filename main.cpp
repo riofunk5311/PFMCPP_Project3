@@ -117,7 +117,7 @@ struct Person
     unsigned int SATScore;
     float distanceTraveled;
 
-    struct LowerBody
+    struct Foot
     {
         int numSteps = 0;
         float inseam = 34.0f;  
@@ -128,18 +128,18 @@ struct Person
         float stepSize();
     };
 
-    LowerBody rightFoot;
-    LowerBody leftFoot;
+    Foot rightFoot;
+    Foot leftFoot;
 
     void run( float howFast, bool startWithleftFoot);
 };
 
-void Person::LowerBody::stepForward()
+void Person::Foot::stepForward()
 {
-    numSteps += 1;
+    ++numSteps;
 }
 
-float Person::LowerBody::stepSize()
+float Person::Foot::stepSize()
 {
     return footSize;
 }
@@ -189,18 +189,17 @@ struct Homebuilding
 
 int Homebuilding::paintWall(int gallonOfPaint)
 {
-    int wallsPainted = 2 * gallonOfPaint;  // using a half size of paint can to paint
-    return wallsPainted;
+    return 2 * gallonOfPaint;  // using a half size of paint can to paint
 }
 
 void polishSurface(int pieceOfWood)
 {
-    pieceOfWood -= 1;
+    --pieceOfWood;
 }
 
 void punchNail(int boxOfNail)
 {
-    boxOfNail -= 1;
+    --boxOfNail;
 }
 
 struct CustomBuildPc
@@ -233,16 +232,17 @@ struct CustomBuildPc
 
 void CustomBuildPc::Cpu::runProgram(int memoryUse, float wattageConsumption, float cpuTemp)
 {
-    memoryUse = 5;
-    wattageConsumption = 35.0f;
-    cpuTemp = 45.0f;
+    if ( wattageConsumption > 80.0f && cpuTemp > 85.0f )
+    {
+        std::cout << "Memory is now being used: " << memoryUse << std::endl;
+    }
 }
 
 float CustomBuildPc::Cpu::powerConsume(float timeCpuRunningInMinutes, int cpuUsage, bool multiThreadingOn)
 {
     if ( multiThreadingOn == true && cpuUsage == 5 )
     {
-        // do something
+        std::cout << "Power Consumption is high" << std::endl;
     }
     return clockSpeedInGhz * timeCpuRunningInMinutes;
 }
@@ -250,8 +250,11 @@ float CustomBuildPc::Cpu::powerConsume(float timeCpuRunningInMinutes, int cpuUsa
 float CustomBuildPc::Cpu::getTimeToCompile(float sizeOfFile, std::string compileError)
 {
     if ( sizeOfFile > 100.0f )
-      std::cout << compileError << std::endl;
-      return sizeOfFile;
+    {
+        std::cout << compileError << std::endl;
+    }
+    
+    return sizeOfFile;
 }
 
 void CustomBuildPc::writeProgram(Cpu cpuA)
@@ -266,8 +269,10 @@ void CustomBuildPc::createVideo(Cpu cpuB)
 
 void CustomBuildPc::editPhoto(std::string appToUse, float memoryUsage)
 {
-    appToUse = "app is running";
-    memoryUsage = 48.0f;
+    if ( memoryUsage > 85 )
+    {
+        std::cout << appToUse << std::endl;
+    }
 }
 
 struct PhotoShoot
@@ -298,7 +303,10 @@ struct PhotoShoot
 
 void PhotoShoot::Camera::shootVideo()
 {
-    // return nothing
+    if ( isMirrorLess == false)
+    {
+        std::string anotherLens = "parfoca";
+    }
 }
 
 void PhotoShoot::Camera::changeLens(std::string nameOfLens)
@@ -310,7 +318,7 @@ int PhotoShoot::Camera::takePhoto()
 {
     if ( isMirrorLess )
     {
-       // do something 
+       std::cout << brand << std::endl;
     }
     int photoTaken = 2;
     return photoTaken;
@@ -325,19 +333,22 @@ struct MotorcycleRepair
     int numSprockets = 2;
 
     void cleanChain(float amountOfLube);
-    int changeTires(float sizeOfTires, bool blockTire); 
+    int changeTires(bool sizeOfTires, bool blockTire); 
     void repairCarburetor(bool isStockCarburetor);
 };
 
 void MotorcycleRepair::cleanChain(float amountOfLube)
 {
-    amountOfLube = 10.0f;
+    std::cout << amountOfLube << std::endl;
 }
 
-int MotorcycleRepair::changeTires(float sizeOfTires, bool blockTire)
+int MotorcycleRepair::changeTires(bool sizeOfTires, bool blockTire)
 {
-    sizeOfTires = 25.4f;
-    blockTire = false;
+    if ( sizeOfTires == true && blockTire == false )
+    {
+        std::cout << "Tires are changed" << std::endl;
+    }
+    
     int tiresChanged = 2;
     return tiresChanged;
 }
@@ -346,7 +357,7 @@ void MotorcycleRepair::repairCarburetor(bool isStockCaburetor)
 {
     if ( isStockCaburetor == false )
     {
-        // do something
+        std::string secondCaburetor = "FCR";
     }
 }
 
@@ -358,29 +369,24 @@ struct Memory
     float ramReadSpeed = 40; 
     float ramWriteSpeed = 40;
 
-    float numAppRunning(float timeAppRunning, double maxMemoryUsed); 
+    void numAppRunning(float timeAppRunning, float maxMemoryUsed); 
     void transferData(float peakTransferRate);
-    void improveFps(float fps, int refreshRate);
+    void improveFps(float fps, float refreshRate);
 };
 
-float Memory::numAppRunning(float timeAppRunning, double maxMemoryUsed)
+void Memory::numAppRunning(float timeAppRunning, float maxMemoryUsed)
 {
-    timeAppRunning = 1.6f;
-    maxMemoryUsed = 1560.46;
-    float memoryLeft = 1230.0f;
-
-    return memoryLeft;
+    std::cout << timeAppRunning << maxMemoryUsed << std::endl;
 }
 
-void transgerData(float peakTransferRate)
+void transferData(float peakTransferRate)
 {
-    peakTransferRate = 12.8f;
+    std::cout << peakTransferRate << std::endl;
 }
 
-void improveFps(float fps, int refreshRate)
+void improveFps(float fps, float refreshRate)
 {
-    fps = 197.4f;
-    refreshRate = 120;
+     std::cout << "fps: " << fps << "Refresh Rate: " << refreshRate << std::endl;
 }
 
 struct Keyboard
@@ -398,22 +404,23 @@ struct Keyboard
 
 int Keyboard::typeCharacters(int wordTypedInMin)
 {
-    wordTypedInMin = 120;
-    keyLanguage = "US";
-
     return wordTypedInMin;
 }
 
 void Keyboard::connectToUsb(int numPortsConnected)
 {
-    numPortsConnected = 3;
-    numUsbPorts = 2;
+    if ( numPortsConnected == 2 )
+    {
+        std::cout << "All USB Ports Are Connected" << std::endl;
+    }
 }
 
 void sendKeyCommands(int keyInput, std::string keyLanguage)
 {
-    keyInput = 22;
-    keyLanguage = "JIS";
+    if ( keyInput == 109 )
+    {
+        std::cout << "It is Apple Keyboard" << keyLanguage << std::endl;
+    }
 }
 
 struct Battery
@@ -426,30 +433,22 @@ struct Battery
 
     void keepCpuRunning(float cpuAveragePowerConsumption, float cpuAveragePower);
     float storeElectricalPower(float currentBatteryPower, float currentWattsInUse); 
-    int chargeOtherDevices(int numPortsConnected, float powerDrawn);
+    int chargeOtherDevices(int numPortsConnected, int powerDrawn);
 };
 
 void Battery::keepCpuRunning(float cpuAveragePowerConsumption, float cpuAveragePower)
 {
-    cpuAveragePowerConsumption = 95.0f;
-    cpuAveragePower = 75.0f;
+    std::cout << "CPU Average Power Consumption: " << cpuAveragePowerConsumption << "CPU Average Power: " << cpuAveragePower << std::endl;
 }
 
 float Battery::storeElectricalPower(float currentBatteryPower, float currentWattsInUse)
 {
-    currentBatteryPower = 67.0f;
-    currentWattsInUse = 60.0f;
-    float batteryPowerLeft = 3500.0f;
-
-    return batteryPowerLeft;
+    return currentBatteryPower - currentWattsInUse;
 }
 
-int chargeOtherDevices(int numPortsConnected, float powerDrawn)
+int chargeOtherDevices(int numPortsConnected, int powerDrawn)
 {
-    numPortsConnected = 3;
-    powerDrawn = 30.0f;
-
-    return numPortsConnected;
+    return numPortsConnected * powerDrawn;
 }
 
 struct Trackpad
@@ -461,30 +460,30 @@ struct Trackpad
     int numConductors = 2;
 
     void detectFingerMovement(float xPosition, float yPosition, bool isFingerOn = false);
-    float detectPositions(int numFingerTouched, bool isFingerMoved); 
+    int detectPositions(int numFingerTouched, bool isFingerMoved); 
     void detectClick(float xPositionClicked, float yPositionClicked);
 };
 
 void Trackpad::detectFingerMovement(float xPosition, float yPosition, bool isFingerOn)
 {
-    xPosition = 100.0f;
-    yPosition = 250.0f;
-    isFingerOn = true;
+    if ( isFingerOn )
+    {
+        std::cout << xPosition << yPosition << std::endl;
+    }
 }
 
-float Trackpad::detectPositions(int numFingerTouched, bool isFingerMoved)
+int Trackpad::detectPositions(int numFingerTouched, bool isFingerMoved)
 {
-    numFingerTouched = 2;
-    isFingerMoved = false;
-    float fingerPosition = 180.0f;
-
-    return fingerPosition;
+    if ( isFingerMoved )
+    {
+        std::cout << "Fingers movement detected" << std::endl;
+    }
+    return numFingerTouched;
 }
 
 void Trackpad::detectClick(float xPositionClicked, float yPositionClicked)
 {
-    xPositionClicked = 160.0f;
-    yPositionClicked = 300.0f;
+    std::cout << xPositionClicked << yPositionClicked << std::endl;
 }
 
 struct SSD
@@ -502,24 +501,20 @@ struct SSD
 
 float SSD::readData(float sizeOfFile)
 {
-    sizeOfFile = 560.0f;
-    float timeToReadFile = sizeOfFile / 500.0f;
-
-    return timeToReadFile;
+    return sizeOfFile / 500.0f;
 }
 
 float SSD::writeData(float sizeOfFile)
 {
-    sizeOfFile = 1000.0f;
-    float timeToWriteFile = sizeOfFile / 800.0f;
-
-    return timeToWriteFile;
+    return sizeOfFile / 800.0f;
 }
 
 void SSD::installApp(float sizeOfAvailableSpace, float sizeOfApp)
 {
-    sizeOfAvailableSpace = 1000.0;
-    sizeOfApp = 560.0f;
+    if ( sizeOfAvailableSpace > sizeOfApp )
+    {
+        std::cout << "Installation will begin shortly" << std::endl;
+    }
 }
 
 struct Laptop
@@ -530,28 +525,28 @@ struct Laptop
     Trackpad externalTrackpadIsConnected;
     SSD Toshiba;
 
-    int runProgram(int numAppsInstalled, float maxMemoryAppUse); 
+    int runProgram(int numAppsInstalled, int maxMemoryAppUse); 
     void displayFonts(std::string fontName);
     void calculateAlgorithm(bool isWrittenInCpp);
 };
 
-int Laptop::runProgram(int numAppsInstalled, float maxMemoryAppUse)
+int Laptop::runProgram(int numAppsInstalled, int maxMemoryAppUse)
 {
-    numAppsInstalled = 20;
-    maxMemoryAppUse = 10.0f;
-    int currentAppRunning = 10;
-
-    return currentAppRunning;
+    std::cout << "Max Memory An App Uses: " << maxMemoryAppUse << std::endl;
+    return numAppsInstalled;
 }
 
 void Laptop::displayFonts(std::string fontName)
 {
-    fontName = "Osaka";
+    std::cout << fontName << std::endl;
 }
 
 void Laptop::calculateAlgorithm(bool isWrittenCpp)
 {
-    isWrittenCpp = true;
+    if ( isWrittenCpp )
+    {
+        std::cout << "Program will start running" << std::endl;
+    }
 }
 
 
