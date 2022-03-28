@@ -398,7 +398,7 @@ struct Keyboard
 
     int typeCharacters(int wordTypedInMin);
     void connectToUsb(int numPortsConnected);
-    void sendKeyCommands(int keyInput, std::string keyLanguage);
+    void sendKeyCommands(int keyInput, std::string keyLayout);
 };
 
 int Keyboard::typeCharacters(int wordTypedInMin)
@@ -414,11 +414,11 @@ void Keyboard::connectToUsb(int numPortsConnected)
     }
 }
 
-void Keyboard::sendKeyCommands(int keyInput, std::string keyLanguage)
+void Keyboard::sendKeyCommands(int keyInput, std::string keyLayout)
 {
     if ( keyInput == 109 )
     {
-        std::cout << "It is Apple Keyboard" << keyLanguage << std::endl;
+        std::cout << "It is Apple Keyboard" << keyLayout << std::endl;
     }
 }
 
