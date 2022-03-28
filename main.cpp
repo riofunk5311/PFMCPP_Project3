@@ -192,12 +192,12 @@ int Homebuilding::paintWall(int gallonOfPaint)
     return 2 * gallonOfPaint;  // using a half size of paint can to paint
 }
 
-void polishSurface(int pieceOfWood)
+void Homebuilding::polishSurface(int pieceOfWood)
 {
     --pieceOfWood;
 }
 
-void punchNail(int boxOfNail)
+void Homebuilding::punchNail(int boxOfNail)
 {
     --boxOfNail;
 }
@@ -348,9 +348,8 @@ int MotorcycleRepair::changeTires(bool sizeOfTires, bool blockTire)
     {
         std::cout << "Tires are changed" << std::endl;
     }
-    
-    int tiresChanged = 2;
-    return tiresChanged;
+
+    return 2;
 }
 
 void MotorcycleRepair::repairCarburetor(bool isStockCaburetor)
@@ -379,12 +378,12 @@ void Memory::numAppRunning(float timeAppRunning, float maxMemoryUsed)
     std::cout << timeAppRunning << maxMemoryUsed << std::endl;
 }
 
-void transferData(float peakTransferRate)
+void Memory::transferData(float peakTransferRate)
 {
     std::cout << peakTransferRate << std::endl;
 }
 
-void improveFps(float fps, float refreshRate)
+void Memory::improveFps(float fps, float refreshRate)
 {
      std::cout << "fps: " << fps << "Refresh Rate: " << refreshRate << std::endl;
 }
@@ -415,7 +414,7 @@ void Keyboard::connectToUsb(int numPortsConnected)
     }
 }
 
-void sendKeyCommands(int keyInput, std::string keyLanguage)
+void Keyboard::sendKeyCommands(int keyInput, std::string keyLanguage)
 {
     if ( keyInput == 109 )
     {
@@ -446,7 +445,7 @@ float Battery::storeElectricalPower(float currentBatteryPower, float currentWatt
     return currentBatteryPower - currentWattsInUse;
 }
 
-int chargeOtherDevices(int numPortsConnected, int powerDrawn)
+int Battery::chargeOtherDevices(int numPortsConnected, int powerDrawn)
 {
     return numPortsConnected * powerDrawn;
 }
