@@ -1,4 +1,4 @@
-/*
+  /*
  Project 3 - Part 3 / 5
  video: Chapter 2 - Part 8
  Constructors tasks
@@ -80,11 +80,19 @@ struct Homebuilding
     int numVaccumCleaners = 3;
     int numWoodNeeded = 35;
     int numSanders = 4;
+    int nailsPerWood = 5;
+    int nailUsed = numWoodNeeded * nailsPerWood; 
+    Homebuilding();
 
     int paintWall(int gallonOfPaint); 
     void polishSurface(int pieceOfWood);
-    void punchNail(int boxOfNail);
+    void punchNail();
 };
+
+Homebuilding::Homebuilding()
+{
+    std::cout << "Homebuilding being constructed!" << std::endl;
+}
 
 int Homebuilding::paintWall(int gallonOfPaint)
 {
@@ -96,9 +104,9 @@ void Homebuilding::polishSurface(int pieceOfWood)
     --pieceOfWood;
 }
 
-void Homebuilding::punchNail(int boxOfNail)
+void Homebuilding::punchNail()
 {
-    --boxOfNail;
+    std::cout << "Homebuilding::punchNail() " << nailUsed << std::endl;
 }
 
 struct CustomBuildPc
@@ -108,6 +116,8 @@ struct CustomBuildPc
     int amountOfHddInGb = 2000;
     int numberOfOs = 1;
     int amountOfWattage = 600;
+    int photo = 50;
+    CustomBuildPc();
 
     struct Cpu
     {
@@ -116,25 +126,34 @@ struct CustomBuildPc
         int numPhysicalCpus = 4;
         std::string manufacturer = "Intel";
         std::string model = "Xeon";
+        std::string program = "Photoshop";
+        Cpu();
 
-        void runProgram(int memoryUse, float wattageConsumption, float cpuTemp);
+        void runProgram();
         float powerConsume(float timeCpuRunningInMinutes, int cpuUsage, bool multiThreadingOn = true);
         float getTimeToCompile(float sizeOfFile, std::string compileError);
     };
 
     void writeProgram(Cpu cpuA);
     void createVideo(Cpu cpuB);
-    void editPhoto(std::string appToUse, float memoryUsage);
+    void editPhoto();
 
     Cpu cpuNotInUse;
 };
 
-void CustomBuildPc::Cpu::runProgram(int memoryUse, float wattageConsumption, float cpuTemp)
+CustomBuildPc::CustomBuildPc()
 {
-    if ( wattageConsumption > 80.0f && cpuTemp > 85.0f )
-    {
-        std::cout << "Memory is now being used: " << memoryUse << std::endl;
-    }
+    std::cout << "CustomBuildPc being constructed!" << std::endl;
+}
+
+CustomBuildPc::Cpu::Cpu()
+{
+    std::cout << "Cpu being constructed!" << std::endl;
+}
+
+void CustomBuildPc::Cpu::runProgram()
+{
+    std::cout << "CustonBuildPc::Cpu::runProgram() " << program << std::endl;
 }
 
 float CustomBuildPc::Cpu::powerConsume(float timeCpuRunningInMinutes, int cpuUsage, bool multiThreadingOn)
@@ -143,6 +162,7 @@ float CustomBuildPc::Cpu::powerConsume(float timeCpuRunningInMinutes, int cpuUsa
     {
         std::cout << "Power Consumption is high" << std::endl;
     }
+    
     return clockSpeedInGhz * timeCpuRunningInMinutes;
 }
 
@@ -158,7 +178,7 @@ float CustomBuildPc::Cpu::getTimeToCompile(float sizeOfFile, std::string compile
 
 void CustomBuildPc::writeProgram(Cpu cpuA)
 {
-     cpuA = cpuNotInUse;
+    cpuA = cpuNotInUse;
 }
 
 void CustomBuildPc::createVideo(Cpu cpuB)
@@ -166,12 +186,9 @@ void CustomBuildPc::createVideo(Cpu cpuB)
      cpuB = cpuNotInUse;
 }
 
-void CustomBuildPc::editPhoto(std::string appToUse, float memoryUsage)
+void CustomBuildPc::editPhoto()
 {
-    if ( memoryUsage > 85 )
-    {
-        std::cout << appToUse << std::endl;
-    }
+    std::cout << "CustomBuildPc::editPhoto() " << photo << std::endl;
 }
 
 struct PhotoShoot
@@ -181,6 +198,8 @@ struct PhotoShoot
     int numHariMakeUpArtists = 2;
     float amountOfClothes = 25.0f;
     int numModel = 6;
+    std::string nameOfCompanies = "Apple";
+    PhotoShoot();
 
     struct Camera
     {
@@ -189,16 +208,32 @@ struct PhotoShoot
         std::string brand = "Nikon";
         std::string model = "Z9";
         std::string typeOfLens = "standard";
+        Camera();
 
         void shootVideo();
-        void changeLens(std::string nameOfLens);
+        void changeLens();
         int takePhoto();
     };    
 
-    void makePr(std::string nameOfCompanies, std::string nameOfProduct);
+    void makePr();
     void makeNewFashionStyle(Camera cameraA);
     int bookStudio(int daysToShoot, int numOfCrews);
 };
+
+PhotoShoot::PhotoShoot()
+{
+    std::cout << "PhotoShoot being constructed!" << std::endl;
+}
+
+PhotoShoot::Camera::Camera()
+{
+    std::cout << "Camera being constructed!" << std::endl;
+}
+
+void PhotoShoot::makePr()
+{
+    std::cout << "PhotoShoot::makePr() " << nameOfCompanies << std::endl;
+}
 
 void PhotoShoot::Camera::shootVideo()
 {
@@ -208,9 +243,9 @@ void PhotoShoot::Camera::shootVideo()
     }
 }
 
-void PhotoShoot::Camera::changeLens(std::string nameOfLens)
+void PhotoShoot::Camera::changeLens()
 {
-    nameOfLens = "Short telephoto";
+    std::cout << "PhotoShoot::Camera::changeLens() "<< typeOfLens << std::endl;
 }
 
 int PhotoShoot::Camera::takePhoto()
@@ -230,25 +265,26 @@ struct MotorcycleRepair
     int numTires = 2;
     int numChains = 4;
     int numSprockets = 2;
+    MotorcycleRepair();
 
     void cleanChain(float amountOfLube);
-    int changeTires(bool sizeOfTires, bool blockTire); 
+    void changeTires(); 
     void repairCarburetor(bool isStockCarburetor);
 };
+
+MotorcycleRepair::MotorcycleRepair()
+{
+    std::cout << "MotorcycleRepair being constructed!" << std::endl;
+}
 
 void MotorcycleRepair::cleanChain(float amountOfLube)
 {
     std::cout << amountOfLube << std::endl;
 }
 
-int MotorcycleRepair::changeTires(bool sizeOfTires, bool blockTire)
+void MotorcycleRepair::changeTires()
 {
-    if ( sizeOfTires == true && blockTire == false )
-    {
-        std::cout << "Tires are changed" << std::endl;
-    }
-
-    return 2;
+    std::cout << "MotorcycleRepair::changeTires() " << numTires << std::endl;
 }
 
 void MotorcycleRepair::repairCarburetor(bool isStockCaburetor)
@@ -266,11 +302,18 @@ struct Memory
     float memoryBusSpeed = 800;
     float ramReadSpeed = 40; 
     float ramWriteSpeed = 40;
+    float improvedFps = 60.0f;
+    Memory();
 
     void numAppRunning(float timeAppRunning, float maxMemoryUsed); 
     void transferData(float peakTransferRate);
-    void improveFps(float fps, float refreshRate);
+    void improveFps();
 };
+
+Memory::Memory()
+{
+    std::cout << "Memory being constructed!" << std::endl;
+}
 
 void Memory::numAppRunning(float timeAppRunning, float maxMemoryUsed)
 {
@@ -282,9 +325,9 @@ void Memory::transferData(float peakTransferRate)
     std::cout << peakTransferRate << std::endl;
 }
 
-void Memory::improveFps(float fps, float refreshRate)
+void Memory::improveFps()
 {
-     std::cout << "fps: " << fps << "Refresh Rate: " << refreshRate << std::endl;
+     std::cout << "Memory::improveFps() " << improvedFps << std::endl;
 }
 
 struct Keyboard
@@ -294,15 +337,23 @@ struct Keyboard
     std::string keyLanguage = "US";
     float bluetoothChannel = 2.0f;
     int numUsbPorts = 2;
+    int characterTyped = 19;
+    Keyboard();
 
-    int typeCharacters(int wordTypedInMin);
+    int typeCharacters();
     void connectToUsb(int numPortsConnected);
     void sendKeyCommands(int keyInput, std::string keyLayout);
 };
 
-int Keyboard::typeCharacters(int wordTypedInMin)
+Keyboard::Keyboard()
 {
-    return wordTypedInMin;
+    std::cout << "Keyboard being constructed!"<< std::endl;
+}
+
+int Keyboard::typeCharacters()
+{
+    std::cout << "Keyboard::typeCharacters() " << characterTyped << std::endl;
+    return characterTyped;
 }
 
 void Keyboard::connectToUsb(int numPortsConnected)
@@ -317,7 +368,7 @@ void Keyboard::sendKeyCommands(int keyInput, std::string keyLayout)
 {
     if ( keyInput == 109 )
     {
-        std::cout << "It is Apple Keyboard" << keyLayout << std::endl;
+        std::cout << "It is Apple Keyboard " << keyLayout << std::endl;
     }
 }
 
@@ -328,11 +379,18 @@ struct Battery
     int numBattery = 1;
     float peakWattage = 96.0f;
     float sizeOfBattery = 1400;
+    int devicesBeingCharged = 3;
+    Battery();
 
     void keepCpuRunning(float cpuAveragePowerConsumption, float cpuAveragePower);
     float storeElectricalPower(float currentBatteryPower, float currentWattsInUse); 
-    int chargeOtherDevices(int numPortsConnected, int powerDrawn);
+    int chargeOtherDevices();
 };
+
+Battery::Battery()
+{
+    std::cout << "Battery being constructed!" << std::endl;
+}
 
 void Battery::keepCpuRunning(float cpuAveragePowerConsumption, float cpuAveragePower)
 {
@@ -344,9 +402,10 @@ float Battery::storeElectricalPower(float currentBatteryPower, float currentWatt
     return currentBatteryPower - currentWattsInUse;
 }
 
-int Battery::chargeOtherDevices(int numPortsConnected, int powerDrawn)
+int Battery::chargeOtherDevices()
 {
-    return numPortsConnected * powerDrawn;
+    std::cout << "Battery::chargeOtherDevices() " << devicesBeingCharged << std::endl;
+    return devicesBeingCharged;
 }
 
 struct Trackpad
@@ -356,11 +415,18 @@ struct Trackpad
     double trackpadSensitivity = 5.00; 
     float cursorAcceleration = 2.0f;
     int numConductors = 2;
+    bool trackPadClicked = true;
+    Trackpad();
 
     void detectFingerMovement(float xPosition, float yPosition, bool isFingerOn = false);
     int detectPositions(int numFingerTouched, bool isFingerMoved); 
-    void detectClick(float xPositionClicked, float yPositionClicked);
+    void detectClick();
 };
+
+Trackpad::Trackpad()
+{
+    std::cout << "Trackpad being constructed!" << std::endl; 
+}
 
 void Trackpad::detectFingerMovement(float xPosition, float yPosition, bool isFingerOn)
 {
@@ -379,9 +445,9 @@ int Trackpad::detectPositions(int numFingerTouched, bool isFingerMoved)
     return numFingerTouched;
 }
 
-void Trackpad::detectClick(float xPositionClicked, float yPositionClicked)
+void Trackpad::detectClick()
 {
-    std::cout << xPositionClicked << yPositionClicked << std::endl;
+    std::cout << "Trackpad::detectClick() "<< trackPadClicked << std::endl;
 }
 
 struct SSD
@@ -390,12 +456,19 @@ struct SSD
     float dataTransferSpeed = 100; 
     std::string brand = "Western Digital";
     int numOfSsd = 2;
+    int appSize = 128;
     std::string connectionType = "NVMe";
+    SSD();
 
     float readData(float sizeOfFile); 
     float writeData(float sizeOfFile); 
-    void installApp(float sizeOfAvailableSpace, float sizeOfApp);
+    void installApp();
 };
+
+SSD::SSD()
+{
+    std::cout << "SSD being constructed!" << std::endl;
+}
 
 float SSD::readData(float sizeOfFile)
 {
@@ -407,12 +480,10 @@ float SSD::writeData(float sizeOfFile)
     return sizeOfFile / 800.0f;
 }
 
-void SSD::installApp(float sizeOfAvailableSpace, float sizeOfApp)
+void SSD::installApp()
 {
-    if ( sizeOfAvailableSpace > sizeOfApp )
-    {
-        std::cout << "Installation will begin shortly" << std::endl;
-    }
+    int availableSpace = sizeOfSsd - appSize;
+    std::cout << "SSD::installApp() " << availableSpace << std::endl;
 }
 
 struct Laptop
@@ -422,11 +493,18 @@ struct Laptop
     Battery batteryChargeCycleCount;
     Trackpad externalTrackpadIsConnected;
     SSD Toshiba;
+    std::string fontName = "Helvetica";
+    Laptop();
 
     int runProgram(int numAppsInstalled, int maxMemoryAppUse); 
-    void displayFonts(std::string fontName);
+    void displayFonts();
     void calculateAlgorithm(bool isWrittenInCpp);
 };
+
+Laptop::Laptop()
+{
+    std::cout << "Laptop being constructed!" << std::endl;
+}
 
 int Laptop::runProgram(int numAppsInstalled, int maxMemoryAppUse)
 {
@@ -434,9 +512,9 @@ int Laptop::runProgram(int numAppsInstalled, int maxMemoryAppUse)
     return numAppsInstalled;
 }
 
-void Laptop::displayFonts(std::string fontName)
+void Laptop::displayFonts()
 {
-    std::cout << fontName << std::endl;
+    std::cout << "Laptop::displayFonts() " << fontName << std::endl;
 }
 
 void Laptop::calculateAlgorithm(bool isWrittenCpp)
@@ -466,7 +544,50 @@ void Laptop::calculateAlgorithm(bool isWrittenCpp)
 int main()
 {
     Example::main();
+
+    Homebuilding homebuilding;
+    homebuilding.punchNail();
+
+    std::cout << "You used " << homebuilding.nailUsed << " nails" << std::endl;
     
+    CustomBuildPc customBuildPc;
+    customBuildPc.editPhoto();
+
+    std::cout << "You edited "<< customBuildPc.photo << " photos" << std::endl;
+
+    CustomBuildPc::Cpu cpu;
+    cpu.runProgram();
+
+    PhotoShoot photoShoot;
+    photoShoot.makePr();
+
+    PhotoShoot::Camera camera;
+    camera.changeLens();
+    
+    MotorcycleRepair motorCycleRepair;
+    motorCycleRepair.changeTires();
+
+    Memory memory;
+    memory.improveFps();
+
+    Keyboard keyboard;
+    keyboard.typeCharacters();
+
+    std::cout << "How many characters are typed? " << keyboard.characterTyped << std::endl;
+
+    Battery battery;
+    battery.chargeOtherDevices();
+
+    Trackpad trackPad;
+    trackPad.detectClick();
+
+    SSD ssd;
+    ssd.installApp();
+
+    Laptop laptop;
+    laptop.displayFonts();
+
+    std::cout << "Is the font Helvetica? " << (laptop.fontName == "Helvetica" ? "True" : "False" ) << std::endl;
     
     std::cout << "good to go!" << std::endl;
 }
