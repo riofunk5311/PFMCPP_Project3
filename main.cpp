@@ -84,7 +84,7 @@ struct Homebuilding
     int nailUsed = numWoodNeeded * nailsPerWood; 
     Homebuilding();
 
-    int paintWall(int gallonOfPaint); 
+    int paintWall(int gallonOfPaint = 2); 
     void polishSurface(int pieceOfWood);
     void punchNail();
 };
@@ -134,8 +134,8 @@ struct CustomBuildPc
         float getTimeToCompile(float sizeOfFile, std::string compileError);
     };
 
-    void writeProgram(Cpu cpuA);
-    void createVideo(Cpu cpuB);
+    void writeProgram(std::string language);
+    void createVideo(Cpu& cpuB, std::string nameOfCpu);
     void editPhoto();
 
     Cpu cpuNotInUse;
@@ -176,14 +176,14 @@ float CustomBuildPc::Cpu::getTimeToCompile(float sizeOfFile, std::string compile
     return sizeOfFile;
 }
 
-void CustomBuildPc::writeProgram(Cpu cpuA)
+void CustomBuildPc::writeProgram(std::string language)
 {
-    cpuA = cpuNotInUse;
+    std::cout << language << std::endl;
 }
 
-void CustomBuildPc::createVideo(Cpu cpuB)
+void CustomBuildPc::createVideo(Cpu &cpuB, std::string nameOfCpu)
 {
-     cpuB = cpuNotInUse;
+     std::cout << cpuB.numCpuCore << nameOfCpu << std::endl;
 }
 
 void CustomBuildPc::editPhoto()
@@ -216,7 +216,7 @@ struct PhotoShoot
     };    
 
     void makePr();
-    void makeNewFashionStyle(Camera cameraA);
+    void makeNewFashionStyle(Camera& cameraA);
     int bookStudio(int daysToShoot, int numOfCrews);
 };
 
@@ -233,6 +233,17 @@ PhotoShoot::Camera::Camera()
 void PhotoShoot::makePr()
 {
     std::cout << "PhotoShoot::makePr() " << nameOfCompanies << std::endl;
+}
+
+void PhotoShoot::makeNewFashionStyle(Camera &cameraA)
+{
+    std::cout << cameraA.brand << std::endl;
+}
+
+int PhotoShoot::bookStudio(int daysToShoot, int numOfCrews)
+{
+    std::cout << "We need " << daysToShoot << " studio days and " << numOfCrews << " Crews" << std::endl;
+    return 0;
 }
 
 void PhotoShoot::Camera::shootVideo()
@@ -547,45 +558,71 @@ int main()
 
     Homebuilding homebuilding;
     homebuilding.punchNail();
+    homebuilding.paintWall(3);
+    homebuilding.polishSurface(4);
 
     std::cout << "You used " << homebuilding.nailUsed << " nails" << std::endl;
     
     CustomBuildPc customBuildPc;
+    CustomBuildPc::Cpu cpu;
+    
     customBuildPc.editPhoto();
+    customBuildPc.writeProgram("C++");
+    customBuildPc.createVideo(cpu, "AMD");
 
     std::cout << "You edited "<< customBuildPc.photo << " photos" << std::endl;
 
-    CustomBuildPc::Cpu cpu;
     cpu.runProgram();
+    cpu.powerConsume(10, 40, true);
+    cpu.getTimeToCompile(150.0f, "Compile Error");
 
     PhotoShoot photoShoot;
-    photoShoot.makePr();
-
     PhotoShoot::Camera camera;
+
+    photoShoot.makeNewFashionStyle(camera);
+    photoShoot.makePr();
+    photoShoot.bookStudio(8, 20);
+
     camera.changeLens();
+    camera.shootVideo();
+    camera.takePhoto();
     
     MotorcycleRepair motorCycleRepair;
     motorCycleRepair.changeTires();
+    motorCycleRepair.cleanChain(3.7f);
+    motorCycleRepair.repairCarburetor(true);
 
     Memory memory;
     memory.improveFps();
+    memory.numAppRunning(9.30f, 256.0f);
+    memory.transferData(60.0f);
 
     Keyboard keyboard;
     keyboard.typeCharacters();
+    keyboard.connectToUsb(3);
+    keyboard.sendKeyCommands(10, "US-EN");
 
     std::cout << "How many characters are typed? " << keyboard.characterTyped << std::endl;
 
     Battery battery;
     battery.chargeOtherDevices();
+    battery.keepCpuRunning(25.0f, 45.0f);
+    battery.storeElectricalPower(3500.0f, 45.5f);
 
     Trackpad trackPad;
     trackPad.detectClick();
+    trackPad.detectFingerMovement(100.0f, 210.0f, false);
+    trackPad.detectPositions(2, true); 
 
     SSD ssd;
     ssd.installApp();
+    ssd.readData(18.0f);
+    ssd.writeData(10.0f);
 
     Laptop laptop;
     laptop.displayFonts();
+    laptop.runProgram(15, 5000);
+    laptop.calculateAlgorithm(true);
 
     std::cout << "Is the font Helvetica? " << (laptop.fontName == "Helvetica" ? "True" : "False" ) << std::endl;
     
