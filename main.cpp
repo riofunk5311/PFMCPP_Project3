@@ -45,7 +45,7 @@ struct Homebuilding
 {
     int numNailGuns = 5;
     int numPaintSupplies = 10;
-    int numWoodNeeded = 35;
+    int numWoodNeeded { 35 };
     int nailsPerWood = 5;
     int nailUsed = numWoodNeeded * nailsPerWood; 
 
@@ -59,10 +59,10 @@ struct Homebuilding
     void punchNail();
 };
 
-Homebuilding::Homebuilding()
+Homebuilding::Homebuilding() : 
+numSanders(4),
+numVaccumCleaners(3)
 {
-    numSanders = 4;
-    numVaccumCleaners = 3;
     std::cout << "Homebuilding being constructed!" << std::endl;
 }
 
@@ -123,10 +123,10 @@ amountOfWattage(600)
     std::cout << "CustomBuildPc being constructed!" << std::endl;
 }
 
-CustomBuildPc::Cpu::Cpu()
+CustomBuildPc::Cpu::Cpu() : 
+numPhysicalCpus(4),
+clockSpeedInGhz(2.8f)
 {
-    numPhysicalCpus = 4;
-    clockSpeedInGhz = 2.8f;
     std::cout << "Cpu being constructed!" << std::endl;
 }
 
@@ -185,7 +185,7 @@ struct PhotoShoot
 
     struct Camera
     {
-        double shutterSpeed = 0.000125; 
+        double shutterSpeed { 0.000125 }; 
         bool isMirrorLess = true;
         std::string brand = "Nikon";
         std::string model;
@@ -202,10 +202,10 @@ struct PhotoShoot
     int bookStudio(int daysToShoot, int numOfCrews);
 };
 
-PhotoShoot::PhotoShoot()
+PhotoShoot::PhotoShoot() : 
+amountOfMemoryCard(512),
+amountOfClothes(25.0f)
 {
-    amountOfMemoryCard = 512;
-    amountOfClothes = 25.0f;
     std::cout << "PhotoShoot being constructed!" << std::endl;
 }
 
@@ -318,14 +318,14 @@ struct Memory
     void improveFps();
 };
 
-Memory::Memory()
+Memory::Memory() : 
+amountOfRam(64),
+numberOfAppsRunning(15),
+memoryBusSpeed(800.0f),
+ramReadSpeed(40.0f),
+ramWriteSpeed(40.0f),
+improvedFps(60.0f)
 {
-    amountOfRam = 64;
-    numberOfAppsRunning = 15;
-    memoryBusSpeed = 800.0f;
-    ramReadSpeed = 40.0f;
-    ramWriteSpeed = 40.0f;
-    improvedFps = 60.0f;
     std::cout << "Memory being constructed!" << std::endl;
 }
 
@@ -346,15 +346,14 @@ void Memory::improveFps()
 
 struct Keyboard
 {
+    Keyboard();
+    int numUsbPorts;
+    int characterTyped;
     int numKeysTyped;
     float distanceKeyTravel;
     std::string keyLanguage;
     float bluetoothChannel;
-    
-    Keyboard();
-    int numUsbPorts;
-    int characterTyped;
-
+   
     int typeCharacters();
     void connectToUsb(int numPortsConnected);
     void sendKeyCommands(int keyInput, std::string keyLayout);
@@ -362,12 +361,12 @@ struct Keyboard
 
 Keyboard::Keyboard() : 
 numUsbPorts(2),
-characterTyped(19)
+characterTyped(19),
+numKeysTyped(20),
+distanceKeyTravel(15.0f),
+keyLanguage("US"),
+bluetoothChannel(2.0f)
 {
-    numKeysTyped = 20;
-    distanceKeyTravel = 15.0f;
-    keyLanguage = "US";
-    bluetoothChannel = 2.0f;
     std::cout << "Keyboard being constructed!"<< std::endl;
 }
 
@@ -450,11 +449,11 @@ struct Trackpad
     void detectClick();
 };
 
-Trackpad::Trackpad()
+Trackpad::Trackpad() : 
+cursorAcceleration(2.0f),
+numConductors(2),
+trackPadClicked(true)
 {
-    cursorAcceleration = 2.0f;
-    numConductors = 2;
-    trackPadClicked = true;
     std::cout << "Trackpad being constructed!" << std::endl; 
 }
 
@@ -484,23 +483,24 @@ void Trackpad::detectClick()
 
 struct SSD
 {
-    int sizeOfSsd = 512;
-    float dataTransferSpeed = 100; 
-    std::string brand;
+    int sizeOfSsd { 512 };
+    float dataTransferSpeed = 100;
     int numOfSsd = 2;
     int appSize = 128;
-    std::string connectionType;
+    
     SSD();
+    std::string brand;
+    std::string connectionType;
 
     float readData(float sizeOfFile); 
     float writeData(float sizeOfFile); 
     void installApp();
 };
 
-SSD::SSD()
+SSD::SSD() : 
+brand("Western Digital"),
+connectionType("NVMe")
 {
-    brand = "Western Digital";
-    connectionType = "NVMe";
     std::cout << "SSD being constructed!" << std::endl;
 }
 
