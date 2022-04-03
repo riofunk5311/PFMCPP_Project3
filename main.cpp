@@ -45,13 +45,15 @@ struct Homebuilding
 {
     int numNailGuns = 5;
     int numPaintSupplies = 10;
-    int numVaccumCleaners = 3;
     int numWoodNeeded = 35;
-    int numSanders = 4;
     int nailsPerWood = 5;
     int nailUsed = numWoodNeeded * nailsPerWood; 
-    Homebuilding();
 
+    Homebuilding();
+    int numSanders;
+    int numVaccumCleaners;
+
+    
     int paintWall(int gallonOfPaint = 2); 
     void polishSurface(int pieceOfWood);
     void punchNail();
@@ -59,6 +61,8 @@ struct Homebuilding
 
 Homebuilding::Homebuilding()
 {
+    numSanders = 4;
+    numVaccumCleaners = 3;
     std::cout << "Homebuilding being constructed!" << std::endl;
 }
 
@@ -69,6 +73,7 @@ int Homebuilding::paintWall(int gallonOfPaint)
 
 void Homebuilding::polishSurface(int pieceOfWood)
 {
+    std::cout << "Number of Sanders: " << numSanders << "\nNumber of Vacuum Cleaners: "<< numVaccumCleaners <<  std::endl;
     --pieceOfWood;
 }
 
@@ -81,21 +86,23 @@ struct CustomBuildPc
 {
     int numOfCpus = 3;
     int amountOfRamInGb = 32;
-    int amountOfHddInGb = 2000;
+    int amountOfHddInGb;
     int numberOfOs = 1;
-    int amountOfWattage = 600;
+    int amountOfWattage;
     int photo = 50;
+
     CustomBuildPc();
 
     struct Cpu
     {
-        float clockSpeedInGhz = 2.8f;
         int numCpuCore = 2;
-        int numPhysicalCpus = 4;
         std::string manufacturer = "Intel";
         std::string model = "Xeon";
         std::string program = "Photoshop";
+
         Cpu();
+        int numPhysicalCpus;
+        float clockSpeedInGhz;
 
         void runProgram();
         float powerConsume(float timeCpuRunningInMinutes, int cpuUsage, bool multiThreadingOn = true);
@@ -109,18 +116,23 @@ struct CustomBuildPc
     Cpu cpuNotInUse;
 };
 
-CustomBuildPc::CustomBuildPc()
+CustomBuildPc::CustomBuildPc() : 
+amountOfHddInGb(2000), 
+amountOfWattage(600)
 {
     std::cout << "CustomBuildPc being constructed!" << std::endl;
 }
 
 CustomBuildPc::Cpu::Cpu()
 {
+    numPhysicalCpus = 4;
+    clockSpeedInGhz = 2.8f;
     std::cout << "Cpu being constructed!" << std::endl;
 }
 
 void CustomBuildPc::Cpu::runProgram()
 {
+    std::cout << "Cpu is running at " << clockSpeedInGhz << " Hz" << " on " << numPhysicalCpus << " CPUs" <<  std::endl;
     std::cout << "CustonBuildPc::Cpu::runProgram() " << program << std::endl;
 }
 
@@ -130,7 +142,7 @@ float CustomBuildPc::Cpu::powerConsume(float timeCpuRunningInMinutes, int cpuUsa
     {
         std::cout << "Power Consumption is high" << std::endl;
     }
-    
+
     return clockSpeedInGhz * timeCpuRunningInMinutes;
 }
 
@@ -151,31 +163,33 @@ void CustomBuildPc::writeProgram(std::string language)
 
 void CustomBuildPc::createVideo(Cpu &cpuB, std::string nameOfCpu)
 {
-     std::cout << cpuB.numCpuCore << nameOfCpu << std::endl;
+     std::cout << cpuB.numCpuCore << "\n" << nameOfCpu << std::endl;
 }
 
 void CustomBuildPc::editPhoto()
 {
+    std::cout << "Amount of wattage: " << amountOfWattage << std::endl;
     std::cout << "CustomBuildPc::editPhoto() " << photo << std::endl;
 }
 
 struct PhotoShoot
 {
     int numCameras = 4;
-    int amountOfMemoryCard = 512;
     int numHariMakeUpArtists = 2;
-    float amountOfClothes = 25.0f;
     int numModel = 6;
     std::string nameOfCompanies = "Apple";
+
     PhotoShoot();
+    int amountOfMemoryCard;
+    float amountOfClothes;
 
     struct Camera
     {
         double shutterSpeed = 0.000125; 
         bool isMirrorLess = true;
         std::string brand = "Nikon";
-        std::string model = "Z9";
-        std::string typeOfLens = "standard";
+        std::string model;
+        std::string typeOfLens;
         Camera();
 
         void shootVideo();
@@ -190,10 +204,14 @@ struct PhotoShoot
 
 PhotoShoot::PhotoShoot()
 {
+    amountOfMemoryCard = 512;
+    amountOfClothes = 25.0f;
     std::cout << "PhotoShoot being constructed!" << std::endl;
 }
 
-PhotoShoot::Camera::Camera()
+PhotoShoot::Camera::Camera() : 
+model("Z9"),
+typeOfLens("Standard")
 {
     std::cout << "Camera being constructed!" << std::endl;
 }
@@ -205,6 +223,7 @@ void PhotoShoot::makePr()
 
 void PhotoShoot::makeNewFashionStyle(Camera &cameraA)
 {
+    std::cout << "We need " << amountOfMemoryCard << " of Memory Card and " << amountOfClothes << " of clothes" << std::endl;
     std::cout << cameraA.brand << std::endl;
 }
 
@@ -220,6 +239,8 @@ void PhotoShoot::Camera::shootVideo()
     {
         std::string anotherLens = "parfoca";
     }
+
+    std::cout << "We use " << model << std::endl;
 }
 
 void PhotoShoot::Camera::changeLens()
@@ -239,11 +260,12 @@ int PhotoShoot::Camera::takePhoto()
 
 struct MotorcycleRepair
 {
-    int numTools = 48;
-    float amountOfEnginOil = 25;
-    int numTires = 2;
-    int numChains = 4;
-    int numSprockets = 2;
+    int numTools;
+    float amountOfEngineOil;
+    int numTires;
+    int numChains;
+    int numSprockets;
+
     MotorcycleRepair();
 
     void cleanChain(float amountOfLube);
@@ -251,19 +273,24 @@ struct MotorcycleRepair
     void repairCarburetor(bool isStockCarburetor);
 };
 
-MotorcycleRepair::MotorcycleRepair()
+MotorcycleRepair::MotorcycleRepair() : 
+numTools(48),
+amountOfEngineOil(25),
+numTires(2),
+numChains(4),
+numSprockets(2)
 {
     std::cout << "MotorcycleRepair being constructed!" << std::endl;
 }
 
 void MotorcycleRepair::cleanChain(float amountOfLube)
 {
-    std::cout << amountOfLube << std::endl;
+    std::cout << "We need "<< amountOfLube << " lube for " << "numChains" << " chains" << std::endl;
 }
 
 void MotorcycleRepair::changeTires()
 {
-    std::cout << "MotorcycleRepair::changeTires() " << numTires << std::endl;
+    std::cout << "MotorcycleRepair::changeTires() " << numTires << " and " << numSprockets << " sprockets"<< std::endl;
 }
 
 void MotorcycleRepair::repairCarburetor(bool isStockCaburetor)
@@ -272,17 +299,19 @@ void MotorcycleRepair::repairCarburetor(bool isStockCaburetor)
     {
         std::string secondCaburetor = "FCR";
     }
+
+    std::cout << "We need " << numTools << " Tools and " << amountOfEngineOil << " engine oil"<< std::endl;
 }
 
 struct Memory
 {
-    int amountOfRam = 64;
-    int numberOfAppsRunning = 15;
-    float memoryBusSpeed = 800;
-    float ramReadSpeed = 40; 
-    float ramWriteSpeed = 40;
-    float improvedFps = 60.0f;
     Memory();
+    int amountOfRam;
+    int numberOfAppsRunning;
+    float memoryBusSpeed;
+    float ramReadSpeed; 
+    float ramWriteSpeed;
+    float improvedFps;
 
     void numAppRunning(float timeAppRunning, float maxMemoryUsed); 
     void transferData(float peakTransferRate);
@@ -291,6 +320,12 @@ struct Memory
 
 Memory::Memory()
 {
+    amountOfRam = 64;
+    numberOfAppsRunning = 15;
+    memoryBusSpeed = 800.0f;
+    ramReadSpeed = 40.0f;
+    ramWriteSpeed = 40.0f;
+    improvedFps = 60.0f;
     std::cout << "Memory being constructed!" << std::endl;
 }
 
@@ -301,7 +336,7 @@ void Memory::numAppRunning(float timeAppRunning, float maxMemoryUsed)
 
 void Memory::transferData(float peakTransferRate)
 {
-    std::cout << peakTransferRate << std::endl;
+    std::cout << "Peak Transfer Rate is: " << peakTransferRate << "\nRead and Write Speed: " << ramReadSpeed << " : " << ramWriteSpeed << std::endl;
 }
 
 void Memory::improveFps()
@@ -311,21 +346,28 @@ void Memory::improveFps()
 
 struct Keyboard
 {
-    int numKeysTyped = 20;
-    float distanceKeyTravel = 15.0f;
-    std::string keyLanguage = "US";
-    float bluetoothChannel = 2.0f;
-    int numUsbPorts = 2;
-    int characterTyped = 19;
+    int numKeysTyped;
+    float distanceKeyTravel;
+    std::string keyLanguage;
+    float bluetoothChannel;
+    
     Keyboard();
+    int numUsbPorts;
+    int characterTyped;
 
     int typeCharacters();
     void connectToUsb(int numPortsConnected);
     void sendKeyCommands(int keyInput, std::string keyLayout);
 };
 
-Keyboard::Keyboard()
+Keyboard::Keyboard() : 
+numUsbPorts(2),
+characterTyped(19)
 {
+    numKeysTyped = 20;
+    distanceKeyTravel = 15.0f;
+    keyLanguage = "US";
+    bluetoothChannel = 2.0f;
     std::cout << "Keyboard being constructed!"<< std::endl;
 }
 
@@ -341,6 +383,8 @@ void Keyboard::connectToUsb(int numPortsConnected)
     {
         std::cout << "All USB Ports Are Connected" << std::endl;
     }
+
+    std::cout << numUsbPorts << " usb ports are being used" << std::endl;
 }
 
 void Keyboard::sendKeyCommands(int keyInput, std::string keyLayout)
@@ -353,27 +397,31 @@ void Keyboard::sendKeyCommands(int keyInput, std::string keyLayout)
 
 struct Battery
 {
-    float batteryPower = 69.6f;
-    float chargeBattery = 1.5f;
-    int numBattery = 1;
     float peakWattage = 96.0f;
     float sizeOfBattery = 1400;
     int devicesBeingCharged = 3;
+
     Battery();
+    float batteryPower;
+    float chargeBattery;
+    int numBattery;
 
     void keepCpuRunning(float cpuAveragePowerConsumption, float cpuAveragePower);
     float storeElectricalPower(float currentBatteryPower, float currentWattsInUse); 
     int chargeOtherDevices();
 };
 
-Battery::Battery()
+Battery::Battery() : 
+batteryPower(69.6f),
+chargeBattery(1.5f),
+numBattery(1)
 {
     std::cout << "Battery being constructed!" << std::endl;
 }
 
 void Battery::keepCpuRunning(float cpuAveragePowerConsumption, float cpuAveragePower)
 {
-    std::cout << "CPU Average Power Consumption: " << cpuAveragePowerConsumption << "CPU Average Power: " << cpuAveragePower << std::endl;
+    std::cout << "CPU Average Power Consumption: " << cpuAveragePowerConsumption << "\nCPU Average Power: " << cpuAveragePower << std::endl;
 }
 
 float Battery::storeElectricalPower(float currentBatteryPower, float currentWattsInUse)
@@ -383,19 +431,19 @@ float Battery::storeElectricalPower(float currentBatteryPower, float currentWatt
 
 int Battery::chargeOtherDevices()
 {
-    std::cout << "Battery::chargeOtherDevices() " << devicesBeingCharged << std::endl;
+    std::cout << "Battery::chargeOtherDevices() " << devicesBeingCharged << " Battery Power is: " << batteryPower << std::endl;
     return devicesBeingCharged;
 }
 
 struct Trackpad
 {
+    Trackpad();
     int depthOfTrackpad = 1149;
     int widthOfTrackpad = 1600;
     double trackpadSensitivity = 5.00; 
-    float cursorAcceleration = 2.0f;
-    int numConductors = 2;
-    bool trackPadClicked = true;
-    Trackpad();
+    float cursorAcceleration;
+    int numConductors;
+    bool trackPadClicked;
 
     void detectFingerMovement(float xPosition, float yPosition, bool isFingerOn = false);
     int detectPositions(int numFingerTouched, bool isFingerMoved); 
@@ -404,6 +452,9 @@ struct Trackpad
 
 Trackpad::Trackpad()
 {
+    cursorAcceleration = 2.0f;
+    numConductors = 2;
+    trackPadClicked = true;
     std::cout << "Trackpad being constructed!" << std::endl; 
 }
 
@@ -421,6 +472,8 @@ int Trackpad::detectPositions(int numFingerTouched, bool isFingerMoved)
     {
         std::cout << "Fingers movement detected" << std::endl;
     }
+
+    std::cout << "Cursor Acceleration is: " << cursorAcceleration << std::endl;
     return numFingerTouched;
 }
 
@@ -433,10 +486,10 @@ struct SSD
 {
     int sizeOfSsd = 512;
     float dataTransferSpeed = 100; 
-    std::string brand = "Western Digital";
+    std::string brand;
     int numOfSsd = 2;
     int appSize = 128;
-    std::string connectionType = "NVMe";
+    std::string connectionType;
     SSD();
 
     float readData(float sizeOfFile); 
@@ -446,11 +499,14 @@ struct SSD
 
 SSD::SSD()
 {
+    brand = "Western Digital";
+    connectionType = "NVMe";
     std::cout << "SSD being constructed!" << std::endl;
 }
 
 float SSD::readData(float sizeOfFile)
 {
+    std::cout << "SSD connection type is: " << connectionType << std::endl;
     return sizeOfFile / 500.0f;
 }
 
