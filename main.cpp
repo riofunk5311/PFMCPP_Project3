@@ -70,10 +70,6 @@ int main()
 //call Example::main() in main()
 
 
-
-
-
-
 struct Homebuilding
 {
     int numNailGuns = 5;
@@ -85,11 +81,33 @@ struct Homebuilding
     Homebuilding();
     int numSanders;
     int numVaccumCleaners;
-
     
     int paintWall(int gallonOfPaint = 2); 
     void polishSurface(int pieceOfWood);
     void punchNail();
+
+    int createAWoodPanel(int pieceOfWood)
+    {
+        int totalWoodPanel = 0;
+        
+        for ( int i = 1; i <= pieceOfWood; i++ )
+        {
+            std::cout << "We created " << i * 2 << " panels" << std::endl;
+        }
+    
+        return totalWoodPanel = pieceOfWood * 2;
+    }
+
+    int hardWoodFlooring(int hardWood)
+    {
+        int i = 1;
+        while ( i <= hardWood)
+        {
+            std::cout << i << " wood installed" << std::endl;
+            ++i;
+        }
+        return hardWood;
+    }
 };
 
 Homebuilding::Homebuilding() : 
@@ -140,13 +158,49 @@ struct CustomBuildPc
         void runProgram();
         float powerConsume(float timeCpuRunningInMinutes, int cpuUsage, bool multiThreadingOn = true);
         float getTimeToCompile(float sizeOfFile, std::string compileError);
+
+        float clockUp(float maxClockGain)
+        {
+            std::cout << "Base Clock is " << clockSpeedInGhz << std::endl;
+            float clockIncrement = 0.1f;
+            float newBaseClock;
+
+            if ( maxClockGain >= 1.0f )
+            {
+                for ( float i = 0.1f; i <= maxClockGain; i += clockIncrement )
+                {
+                    newBaseClock = i + clockSpeedInGhz;
+                    std::cout << "Running at " << newBaseClock << " Ghz " << std::endl;
+                }
+            }
+            else 
+            {
+                std::cout << "Cpu is not running properly" << std::endl;
+            }
+
+            return 0;
+        }        
     };
 
     void writeProgram(std::string language);
     void createVideo(Cpu& cpuB, std::string nameOfCpu);
     void editPhoto();
 
-    Cpu cpuNotInUse;
+    void photoPrint(int photoYouWantToPrint)
+    {
+        int i = 0;
+
+        if ( photoYouWantToPrint > photo)
+        {
+            while ( i > photo )
+            {
+                std::cout << "Printed " << i << " photo" << std::endl;
+            }
+        }
+        
+        std::cout << "Totally " << photoYouWantToPrint << " are printed" << std::endl;
+        return;
+    }
 };
 
 CustomBuildPc::CustomBuildPc() : 
@@ -208,8 +262,8 @@ void CustomBuildPc::editPhoto()
 struct PhotoShoot
 {
     int numCameras = 4;
-    int numHariMakeUpArtists = 2;
-    int numModel = 6;
+    int numHairMakeUpArtists;
+    int numModel = 8;
     std::string nameOfCompanies = "Apple";
 
     PhotoShoot();
@@ -228,11 +282,38 @@ struct PhotoShoot
         void shootVideo();
         void changeLens();
         int takePhoto();
-    };    
+
+        void countModel(int personTaken)
+        {
+            PhotoShoot photoShoot;
+            
+            for ( int i = 1; i < personTaken; i++ )
+            {
+                std::cout << i << " Person is done" << std::endl;
+                std::cout << photoShoot.numModel - 1 << " models left" << std::endl;
+                photoShoot.numModel -= 1;
+            }
+            return;
+        }
+    };
 
     void makePr();
     void makeNewFashionStyle(Camera& cameraA);
     int bookStudio(int daysToShoot, int numOfCrews);
+
+    int callHairMakeArtist(int personToBeShot)
+    {
+        int i = 1;
+        numHairMakeUpArtists = 1;
+        while( i < personToBeShot )
+        {
+            std::cout << i << " model here" << std::endl;
+            std::cout << "we need " << numHairMakeUpArtists << " hair make up artists" << std::endl;
+            i += 1;
+            numHairMakeUpArtists += 1;
+        }
+        return numHairMakeUpArtists;
+    }
 };
 
 PhotoShoot::PhotoShoot() : 
@@ -304,6 +385,18 @@ struct MotorcycleRepair
     void cleanChain(float amountOfLube);
     void changeTires(); 
     void repairCarburetor(bool isStockCarburetor);
+
+    float changeOil(int motorCycle)
+    {
+        std::cout << "We need 3 cans of engin oil for a motor cycle" << std::endl;
+        for ( int i = 0; i < motorCycle; i++ )
+        {
+            std::cout << "Engine Oil changed" << std::endl;
+            std::cout << (amountOfEngineOil - 3) << " cans of oil left" << std::endl;
+            amountOfEngineOil -= 3.0f; 
+        }
+        return amountOfEngineOil;
+    }
 };
 
 MotorcycleRepair::MotorcycleRepair() : 
@@ -349,6 +442,19 @@ struct Memory
     void numAppRunning(float timeAppRunning, float maxMemoryUsed); 
     void transferData(float peakTransferRate);
     void improveFps();
+
+    int availabilityChecker(float availableMemory)
+    {
+        float i = 0.0f;
+        while ( i < availableMemory )
+        {
+            std::cout << availableMemory << " gb memory available and " << numberOfAppsRunning << " apps running"<<  std::endl;
+            availableMemory -= 5.0f;
+            numberOfAppsRunning -= 3;
+            i++;
+        }
+        return numberOfAppsRunning;
+    }
 };
 
 Memory::Memory() : 
@@ -390,11 +496,30 @@ struct Keyboard
     int typeCharacters();
     void connectToUsb(int numPortsConnected);
     void sendKeyCommands(int keyInput, std::string keyLayout);
+
+    int deleteCharacter(int pressDeleteKey) 
+    {
+        if ( pressDeleteKey >= characterTyped )
+        {
+            std::cout << "You deleted all words" << std::endl;
+        }
+        else
+        {
+            for ( int i = 1; i <= pressDeleteKey; i++ )
+            {
+                std::cout << "You deleted " << i << " word(s)" << std::endl;
+                characterTyped -= i;
+            }
+
+            std::cout << "You deleted all words" << std::endl;
+        }
+        return characterTyped;
+    }
 };
 
 Keyboard::Keyboard() : 
 numUsbPorts(2),
-characterTyped(19),
+characterTyped(40),
 numKeysTyped(20),
 distanceKeyTravel(15.0f),
 keyLanguage("US"),
@@ -441,6 +566,22 @@ struct Battery
     void keepCpuRunning(float cpuAveragePowerConsumption, float cpuAveragePower);
     float storeElectricalPower(float currentBatteryPower, float currentWattsInUse); 
     int chargeOtherDevices();
+
+    float checkBatteryStatus(float averagePower)
+    {
+        while ( averagePower < peakWattage )
+        {
+            std::cout << "You have now " << (sizeOfBattery -= averagePower) << " left" << std::endl;
+
+            if ( sizeOfBattery < peakWattage )
+            {
+                std::cout << "Low battery" << std::endl;
+                break;
+            }
+        }
+
+        return sizeOfBattery;
+    }
 };
 
 Battery::Battery() : 
@@ -619,6 +760,9 @@ int main()
     homebuilding.polishSurface(4);
 
     std::cout << "You used " << homebuilding.nailUsed << " nails" << std::endl;
+
+    std::cout << homebuilding.createAWoodPanel(3) << std::endl;
+    std::cout << homebuilding.hardWoodFlooring(45) << std::endl;
     
     CustomBuildPc customBuildPc;
     CustomBuildPc::Cpu cpu;
@@ -633,6 +777,11 @@ int main()
     cpu.powerConsume(10, 40, true);
     cpu.getTimeToCompile(150.0f, "Compile Error");
 
+    auto newCpuClock = cpu.clockUp(1.0f);
+    std::cout << newCpuClock << std::endl;
+
+    customBuildPc.photoPrint(35);
+
     PhotoShoot photoShoot;
     PhotoShoot::Camera camera;
 
@@ -643,16 +792,23 @@ int main()
     camera.changeLens();
     camera.shootVideo();
     camera.takePhoto();
+
+    camera.countModel(8);
+    photoShoot.callHairMakeArtist(8);
     
     MotorcycleRepair motorCycleRepair;
     motorCycleRepair.changeTires();
     motorCycleRepair.cleanChain(3.7f);
     motorCycleRepair.repairCarburetor(true);
 
+    motorCycleRepair.changeOil(3.0f);
+
     Memory memory;
     memory.improveFps();
     memory.numAppRunning(9.30f, 256.0f);
     memory.transferData(60.0f);
+
+    memory.availabilityChecker(15.0f);
 
     Keyboard keyboard;
     keyboard.typeCharacters();
@@ -661,10 +817,14 @@ int main()
 
     std::cout << "How many characters are typed? " << keyboard.characterTyped << std::endl;
 
+    keyboard.deleteCharacter(34);
+
     Battery battery;
     battery.chargeOtherDevices();
     battery.keepCpuRunning(25.0f, 45.0f);
     battery.storeElectricalPower(3500.0f, 45.5f);
+
+    battery.checkBatteryStatus(12.0f);
 
     Trackpad trackPad;
     trackPad.detectClick();
