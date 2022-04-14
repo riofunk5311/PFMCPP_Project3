@@ -188,17 +188,18 @@ struct CustomBuildPc
 
     void photoPrint(int photoYouWantToPrint)
     {
-        int i = 0;
-
-        if ( photoYouWantToPrint > photo)
+        int i = 1;
+        if ( photoYouWantToPrint <= photo)
         {
-            while ( i > photo )
+            while ( i < photoYouWantToPrint )
             {
                 std::cout << "Printed " << i << " photo" << std::endl;
+                std::cout << (photo - 1) << " left" << std::endl;
+                i++;
+                photo--;
             }
+            std::cout << "Totally " << photoYouWantToPrint << " are printed" << std::endl;
         }
-        
-        std::cout << "Totally " << photoYouWantToPrint << " are printed" << std::endl;
         return;
     }
 };
@@ -305,13 +306,16 @@ struct PhotoShoot
     {
         int i = 1;
         numHairMakeUpArtists = 1;
+
         while( i < personToBeShot )
         {
             std::cout << i << " model here" << std::endl;
             std::cout << "we need " << numHairMakeUpArtists << " hair make up artists" << std::endl;
+
             i += 1;
             numHairMakeUpArtists += 1;
         }
+        
         return numHairMakeUpArtists;
     }
 };
@@ -507,8 +511,8 @@ struct Keyboard
         {
             for ( int i = 1; i <= pressDeleteKey; i++ )
             {
-                std::cout << "You deleted " << i << " word(s)" << std::endl;
-                characterTyped -= i;
+                std::cout << "You deleted " << i << " character(s)" << std::endl;
+                characterTyped -= 1;
             }
 
             std::cout << "You deleted all words" << std::endl;
@@ -571,11 +575,11 @@ struct Battery
     {
         while ( averagePower < peakWattage )
         {
-            std::cout << "You have now " << (sizeOfBattery -= averagePower) << " left" << std::endl;
+            std::cout << "You have now " << (sizeOfBattery -= averagePower) << " mAh left" << std::endl;
 
             if ( sizeOfBattery < peakWattage )
             {
-                std::cout << "Low battery" << std::endl;
+                std::cout << "Battery Power is low now" << std::endl;
                 break;
             }
         }
@@ -621,6 +625,22 @@ struct Trackpad
     void detectFingerMovement(float xPosition, float yPosition, bool isFingerOn = false);
     int detectPositions(int numFingerTouched, bool isFingerMoved); 
     void detectClick();
+
+    void changeCursorAcceleration(int increaseAcceleration)
+    {
+        if ( increaseAcceleration >= 6 )
+        {
+            std::cout << "Invalid Number" << std::endl;
+        }
+        else
+        {
+            for ( int i = 0; i < increaseAcceleration; i++ )
+            {
+                std::cout << "Cursor Acceleration is now " << cursorAcceleration << std::endl;
+                cursorAcceleration++;
+            }
+        }
+    }
 };
 
 Trackpad::Trackpad() : 
@@ -669,6 +689,21 @@ struct SSD
     float readData(float sizeOfFile); 
     float writeData(float sizeOfFile); 
     void installApp();
+
+    int installSSD(int additionalSSD, int maxOfSsdOsCanDetect)
+    {
+        for ( int i = 1; i <= additionalSSD; i++ )
+        {
+            std::cout << i << " external drive detected" << std::endl;
+            numOfSsd += 1;
+
+            if ( numOfSsd == maxOfSsdOsCanDetect )
+            {
+                return numOfSsd;
+            }  
+        }
+        return numOfSsd;
+    }
 };
 
 SSD::SSD() : 
@@ -794,21 +829,24 @@ int main()
     camera.takePhoto();
 
     camera.countModel(8);
-    photoShoot.callHairMakeArtist(8);
+    auto hairMakeWeNeed = photoShoot.callHairMakeArtist(8);
+    std::cout << "We need " << hairMakeWeNeed << " hair make up artists" << std::endl;
     
     MotorcycleRepair motorCycleRepair;
     motorCycleRepair.changeTires();
     motorCycleRepair.cleanChain(3.7f);
     motorCycleRepair.repairCarburetor(true);
 
-    motorCycleRepair.changeOil(3.0f);
+    auto engineOilLeft = motorCycleRepair.changeOil(3.0f);
+    std::cout << engineOilLeft << " cans left" << std::endl;
 
     Memory memory;
     memory.improveFps();
     memory.numAppRunning(9.30f, 256.0f);
     memory.transferData(60.0f);
 
-    memory.availabilityChecker(15.0f);
+    auto appsRunning = memory.availabilityChecker(15.0f);
+    std::cout << appsRunning << " Apps Running" << std::endl;
 
     Keyboard keyboard;
     keyboard.typeCharacters();
@@ -817,24 +855,31 @@ int main()
 
     std::cout << "How many characters are typed? " << keyboard.characterTyped << std::endl;
 
-    keyboard.deleteCharacter(34);
+    auto charLeft = keyboard.deleteCharacter(34);
+    std::cout << "There are " << charLeft << " characters left" << std::endl;
 
     Battery battery;
     battery.chargeOtherDevices();
     battery.keepCpuRunning(25.0f, 45.0f);
     battery.storeElectricalPower(3500.0f, 45.5f);
 
-    battery.checkBatteryStatus(12.0f);
+    auto remainingBattery = battery.checkBatteryStatus(25.0f);
+    std::cout << remainingBattery << " mAh remaining" <<  std::endl;
 
     Trackpad trackPad;
     trackPad.detectClick();
     trackPad.detectFingerMovement(100.0f, 210.0f, false);
     trackPad.detectPositions(2, true); 
 
+    trackPad.changeCursorAcceleration(4);
+
     SSD ssd;
     ssd.installApp();
     ssd.readData(18.0f);
     ssd.writeData(10.0f);
+
+    auto allDrive = ssd.installSSD(2, 7);
+    std::cout << "Total "<< allDrive << " installed"<< std::endl;
 
     Laptop laptop;
     laptop.displayFonts();
