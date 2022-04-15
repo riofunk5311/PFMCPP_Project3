@@ -90,7 +90,7 @@ struct Homebuilding
     {
         int totalWoodPanel = 0;
         
-        for ( int i = 1; i <= pieceOfWood; i++ )
+        for ( int i = 1; i <= pieceOfWood; ++i )
         {
             std::cout << "We created " << i * 2 << " panels" << std::endl;
         }
@@ -195,8 +195,8 @@ struct CustomBuildPc
             {
                 std::cout << "Printed " << i << " photo" << std::endl;
                 std::cout << (photo - 1) << " left" << std::endl;
-                i++;
-                photo--;
+                ++i;
+                --photo;
             }
             std::cout << "Totally " << photoYouWantToPrint << " are printed" << std::endl;
         }
@@ -288,7 +288,7 @@ struct PhotoShoot
         {
             PhotoShoot photoShoot;
             
-            for ( int i = 1; i < personTaken; i++ )
+            for ( int i = 1; i < personTaken; ++i )
             {
                 std::cout << i << " Person is done" << std::endl;
                 std::cout << photoShoot.numModel - 1 << " models left" << std::endl;
@@ -312,8 +312,8 @@ struct PhotoShoot
             std::cout << i << " model here" << std::endl;
             std::cout << "we need " << numHairMakeUpArtists << " hair make up artists" << std::endl;
 
-            i += 1;
-            numHairMakeUpArtists += 1;
+            ++i;
+            ++numHairMakeUpArtists;
         }
         
         return numHairMakeUpArtists;
@@ -393,7 +393,7 @@ struct MotorcycleRepair
     float changeOil(int motorCycle)
     {
         std::cout << "We need 3 cans of engin oil for a motor cycle" << std::endl;
-        for ( int i = 0; i < motorCycle; i++ )
+        for ( int i = 0; i < motorCycle; ++i )
         {
             std::cout << "Engine Oil changed" << std::endl;
             std::cout << (amountOfEngineOil - 3) << " cans of oil left" << std::endl;
@@ -452,10 +452,10 @@ struct Memory
         float i = 0.0f;
         while ( i < availableMemory )
         {
-            std::cout << availableMemory << " gb memory available and " << numberOfAppsRunning << " apps running"<<  std::endl;
+            std::cout << availableMemory << " gb memory available and " << numberOfAppsRunning << " apps running"<< std::endl;
             availableMemory -= 5.0f;
             numberOfAppsRunning -= 3;
-            i++;
+            ++i;
         }
         return numberOfAppsRunning;
     }
@@ -509,7 +509,7 @@ struct Keyboard
         }
         else
         {
-            for ( int i = 1; i <= pressDeleteKey; i++ )
+            for ( int i = 1; i <= pressDeleteKey; ++i )
             {
                 std::cout << "You deleted " << i << " character(s)" << std::endl;
                 characterTyped -= 1;
@@ -575,7 +575,8 @@ struct Battery
     {
         while ( averagePower < peakWattage )
         {
-            std::cout << "You have now " << (sizeOfBattery -= averagePower) << " mAh left" << std::endl;
+            sizeOfBattery -= averagePower;
+            std::cout << "You have now " << sizeOfBattery << " mAh left" << std::endl;
 
             if ( sizeOfBattery < peakWattage )
             {
@@ -634,10 +635,10 @@ struct Trackpad
         }
         else
         {
-            for ( int i = 0; i < increaseAcceleration; i++ )
+            for ( int i = 0; i < increaseAcceleration; ++i )
             {
                 std::cout << "Cursor Acceleration is now " << cursorAcceleration << std::endl;
-                cursorAcceleration++;
+                ++cursorAcceleration;
             }
         }
     }
@@ -692,7 +693,7 @@ struct SSD
 
     int installSSD(int additionalSSD, int maxOfSsdOsCanDetect)
     {
-        for ( int i = 1; i <= additionalSSD; i++ )
+        for ( int i = 1; i <= additionalSSD; ++i )
         {
             std::cout << i << " external drive detected" << std::endl;
             numOfSsd += 1;
